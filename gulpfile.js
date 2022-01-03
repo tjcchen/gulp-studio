@@ -27,8 +27,8 @@ gulp.task('copyHtml', () => {
 // optimize images
 gulp.task('imageMin', () => {
     gulp.src('src/images/*')
-		.pipe(imagemin())
-		.pipe(gulp.dest('dist/images'))
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/images'))
 });
 
 // cmd: gulp
