@@ -3,6 +3,7 @@
  */
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
+const sass = require('gulp-sass')(require('sass'));
 // const imagemin = require('gulp-imagemin');
 
 /*
@@ -38,6 +39,13 @@ gulp.task('minify', () => {
     gulp.src('src/js/*.js')
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'));
+});
+
+// compile sass
+gulp.task('sass', () => {
+    gulp.src('src/sass/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('dist/css'))
 });
 
 // cmd: gulp
