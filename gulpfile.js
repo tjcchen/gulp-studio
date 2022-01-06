@@ -4,6 +4,7 @@
 const gulp = require('gulp');
 const uglify = require('gulp-uglify');
 const sass = require('gulp-sass')(require('sass'));
+const concat = require('gulp-concat');
 // const imagemin = require('gulp-imagemin');
 
 /*
@@ -52,6 +53,15 @@ gulp.task('sass', (done) => {
     done();
 });
 
+// concat files
+gulp.task('scripts', (done) => {
+    gulp.src('src/js/*.js')
+        .pipe(concat('main.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist/js'))
+    done();
+});
+
 // cmd: gulp
 // run a group of tasks in one task
-gulp.task('default', gulp.series('message', 'copyHtml', 'minify', 'sass'));
+gulp.task('default', gulp.series('message', 'copyHtml', 'sass', 'scripts'));
