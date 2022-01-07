@@ -62,6 +62,14 @@ gulp.task('scripts', (done) => {
     done();
 });
 
+// gulp watch
+gulp.task('watch', (done) => {
+    gulp.watch('src/js/*.js', gulp.series('scripts'));
+    gulp.watch('src/sass/*.scss', gulp.series('sass'));
+    gulp.watch('src/*.html', gulp.series('copyHtml'));
+    done();
+});
+
 // cmd: gulp
 // run a group of tasks in one task
 gulp.task('default', gulp.series('message', 'copyHtml', 'sass', 'scripts'));
